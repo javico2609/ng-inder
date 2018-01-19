@@ -5,22 +5,25 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { InteractionProvider } from '../providers/utils';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  
+
   public rootPage: any;
   public pages = SideMenu;
 
   constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar, 
+    public platform: Platform,
+    public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage) {
+    private storage: Storage,
+    private interaction: InteractionProvider) {
 
+    this.listenForNavigationEvents();
     this.goToMainPage();
   }
 
@@ -37,9 +40,23 @@ export class MyApp {
     });
   }
 
+  listenForNavigationEvents() {
+    this.interaction.getNavigatorListener().subscribe((page: any) => {
+      if (page.type === 'POP') {
+        this.nav.pop();
+      }
+      else if(page.type == 'ROOT') {
+        this.nav.setRoot(page.page)
+      }
+      else {
+        this.nav.push(page.page);
+      }
+    });
+  }
+
   private goToMainPage() {
     this.storage.get(TOKEN).then((token) => {
-      if(token){
+      if (token) {
         this.rootPage = MainPage;
         //this.store.dispatch(new LookupUserinfoAction());
       }
@@ -47,7 +64,7 @@ export class MyApp {
         this.rootPage = FirstRunPage;
     });
   }
-  
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
