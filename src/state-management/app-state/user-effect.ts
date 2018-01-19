@@ -34,10 +34,19 @@ export class UserEffects {
       .catch(err => Observable.of(new actions.ApiErrorAction({action: actions.ActionTypes.LOGOUT, error: err})))
     );
 
+    @Effect() editOrRegisterUserAction = this.actions$
+      .ofType(actions.ActionTypes.EDIT_OR_REGISTER)
+      .map((action: any) => action.payload)
+      .exhaustMap(
+        (payload) => this.userProvider.editOrRegister(payload)
+          .map(res => new actions.ApiSuccessAction({action: actions.ActionTypes.EDIT_OR_REGISTER, data: res}))
+          .exhaustMap(() => this.getUserInfo())
+          .catch(err => Observable.of(new actions.ApiErrorAction({action: actions.ActionTypes.EDIT_OR_REGISTER, error: err})))
+    );
+
   getUserInfo() {
     return this.userProvider.getUserInfo()
       .map(res => new actions.ApiSuccessAction({action: actions.ActionTypes.LOOKUP_USERINFO, data: res}))
       .catch(err => Observable.of(new actions.ApiErrorAction({action: actions.ActionTypes.LOOKUP_USERINFO, error: err})));
   }
-
 }

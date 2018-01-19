@@ -26,6 +26,10 @@ export class UserProvider {
     return Observable.fromPromise(this.storage.set(props.TOKEN, token));
   }
 
+  editOrRegister(newUser: any) {
+    return this.handleJwtResponse(newUser);
+  }
+
   logout() {
     return Observable.fromPromise(this.storage.remove(props.TOKEN));
   }

@@ -1,4 +1,3 @@
-import { RegisterPage, ForgotPasswordPage } from './../pages';
 import { LoginAction } from './../../state-management/app-state/user-actions';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, MenuController } from 'ionic-angular';
@@ -8,7 +7,7 @@ import { AppState } from '../../state-management';
 import { InteractionProvider } from '../../providers/utils';
 
 /**
- * Generated class for the AuthPage page.
+ * Generated class for the ForgotPasswordPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -16,10 +15,10 @@ import { InteractionProvider } from '../../providers/utils';
 
 @IonicPage()
 @Component({
-  selector: 'page-auth',
-  templateUrl: 'auth.html',
+  selector: 'page-forgot-password',
+  templateUrl: 'forgot-password.html',
 })
-export class AuthPage {
+export class ForgotPasswordPage {
 
   public formGroup: FormGroup;
   
@@ -30,13 +29,11 @@ export class AuthPage {
     private interaction: InteractionProvider) {
 
     this.formGroup = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      username: ['', [Validators.required]]
     });
   }
-
   ionViewDidLoad() {
-   
+    console.log('ionViewDidLoad ForgotPasswordPage');
   }
 
   ionViewDidEnter() {
@@ -47,15 +44,8 @@ export class AuthPage {
     this.menuCtrl.enable(true);
   }
 
-  login() {
-    this.store.dispatch(new LoginAction(this.formGroup.value));
+  send() {
+    
   }
 
-  register() {
-    this.interaction.push({type:'PUSH', page: RegisterPage});
-  }
-
-  forgotPassword() {
-    this.interaction.push({type:'PUSH', page: ForgotPasswordPage})
-  }
 }

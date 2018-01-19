@@ -6,11 +6,18 @@ export const ActionTypes = {
   LOGIN: type('[USER] LoginAction'),
   LOGOUT: type('[USER] LogoutAction'),
   LOOKUP_USERINFO: type('[USER] LookupUserinfoAction'),
-  API_ERROR: type('[USER] ApiErrorAction')
+  API_ERROR: type('[USER] ApiErrorAction'),
+  EDIT_OR_REGISTER: type('[USER] EditOrRegisterAction'),
 };
 
 export class LoginAction implements Action {
   type = ActionTypes.LOGIN;
+
+  constructor(public payload?: any) { }
+}
+
+export class EditOrRegisterAction implements Action {
+  type = ActionTypes.EDIT_OR_REGISTER;
 
   constructor(public payload?: any) { }
 }
@@ -39,4 +46,4 @@ export class ApiErrorAction implements Action {
   constructor(public payload?: { action: any, error: any}) { }
 }
 
-export type Actions =  ApiSuccessAction | LoginAction | LogoutAction | LookupUserinfoAction | ApiErrorAction;
+export type Actions =  ApiSuccessAction | LoginAction | LogoutAction | LookupUserinfoAction | ApiErrorAction | EditOrRegisterAction;

@@ -5,15 +5,13 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-<ion-navbar>
-  <ion-title>Ng-Inder Login</ion-title>
-</ion-navbar>
-
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    
+
     <form class="form" [formGroup]="formGroup" novalidate>
         <mat-form-field class="full-width">
           <input matInput formControlName="username" placeholder="User or Email" value="">
@@ -24,7 +22,17 @@
         </mat-form-field>
 
         <button [disabled]="!formGroup.valid" mat-raised-button color="primary" (click)="login()">Login</button>
-        <button mat-raised-button color="secondary" (click)="login()">Register</button>
+
+        <p (click)="forgotPassword()"><strong>Forgot your password?</strong></p>
+
       </form>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar class="footer">
+      <div (click)="register()">
+        <span>Don't have an account? <strong>Sign up here</strong>.</span>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

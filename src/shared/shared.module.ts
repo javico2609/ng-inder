@@ -1,3 +1,4 @@
+import { UserFormEditComponent } from './user-form-edit-component/user-form-edit-component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,9 +39,13 @@ import { SwingModule } from 'angular2-swing';
         MatInputModule,
         MatGridListModule,
 
-        SwingModule
+        SwingModule,
+
+        UserFormEditComponent
     ],
-    declarations: [],
+    declarations: [
+        UserFormEditComponent
+    ],
     providers: [],
 })
 export class SharedModule { }

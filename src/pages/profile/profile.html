@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!(showEditProfileForm$ | async); else editProfileForm">
+      <div id="profile-bg"></div>
+      <div id="content">
+        <div id="profile-info">
+          <img id="profile-image" src="assets/profile/profile.jpg">
+          <p class="edit-profile" (click)="showEditProfile()">Edit</p>
+          <h3 id="profile-name">{{ (userInfo$ | async)?.username }}</h3> 
+          <span id="profile-description">Full Stack Developer</span>
+          <p>Follow my on <a href="http://twitter.com/javico2609">@twitter</a></p>
+        </div>
+      </div>
+  </ng-container>
+
+  <ng-template #editProfileForm>
+    <div padding>
+        <user-form-edit [user]="userInfo$ | async" (onSave)="save($event)"></user-form-edit>
+    </div>
+  </ng-template>
+   
+</ion-content>
