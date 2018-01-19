@@ -30,8 +30,10 @@
 </ion-content>
 <ion-footer>
   <div class="tinder-footer">
-    <div id="swipe_dislike" class="rate" (click)="voteUp(false)"></div>
-    <div class="info"></div>
-    <div id="swipe_like" class="rate" (click)="voteUp(true)"></div>
+    <div class="button-row">
+      <button mat-fab color="primary" id="swipe_dislike" class="rate" (click)="voteUp(false)"></button>
+      <div class="info"></div>
+      <button mat-fab color="accent" id="swipe_like" class="rate" (click)="voteUp(true)"></button>    
+    </div>
   </div>
 </ion-footer>

@@ -4,7 +4,7 @@ page-home {
       }
 
       ion-card-content {
-background-color: white;
+        background-color: white;
       }
 
       ion-card.td-card {
@@ -37,14 +37,20 @@ background-color: white;
         padding-top: 6px;
       }
 
+      .button-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+
       .rate {
         width: 70px;
         height: 70px;
-        border-radius: 70px;
-        background: #FFF;
-        border: 5px solid #f0f0f0;
+        // border-radius: 70px;
+        // background: #FFF;
+        // border: 5px solid #f0f0f0;
         float: left;
-        box-shadow: 1px 1px 1px 0px #e9e9e9;
+        // box-shadow: 1px 1px 1px 0px #e9e9e9;
       }
 
       .rate:nth-child(1) {
