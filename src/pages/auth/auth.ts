@@ -1,6 +1,6 @@
 import { LoginAction } from './../../state-management/app-state/user-actions';
-import { Component } from '@angular/core';
-import { IonicPage, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, MenuController, Slides } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../state-management';
@@ -18,6 +18,10 @@ import { AppState } from '../../state-management';
   templateUrl: 'auth.html',
 })
 export class AuthPage {
+
+  @ViewChild('slider') slider: Slides;
+  @ViewChild('innerSlider') innerSlider: Slides;
+
 
   public formGroup: FormGroup;
   

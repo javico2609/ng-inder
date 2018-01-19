@@ -1,3 +1,5 @@
+import { LogoutAction } from './../state-management/app-state/user-actions';
+import { Store } from '@ngrx/store';
 import { TOKEN } from './../global-properties/properties';
 import { SideMenu, MainPage, FirstRunPage } from './../pages/pages';
 import { Component, ViewChild } from '@angular/core';
@@ -6,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { InteractionProvider } from '../providers/utils';
+import { AppState } from '../state-management';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,14 +24,15 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private storage: Storage,
-    private interaction: InteractionProvider) {
+    private interaction: InteractionProvider,
+    private store: Store<AppState>) {
 
     this.listenForNavigationEvents();
     this.goToMainPage();
   }
 
   logout() {
-
+    this.store.dispatch(new LogoutAction());
   }
 
   ionViewDidLoad() {
