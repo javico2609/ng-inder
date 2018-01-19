@@ -1,6 +1,8 @@
 export const USER = "_user";
 export const TOKEN = "nginder_token";
 
+export const TINDER_LIMIT = 20;
+
 export const StatusCodes = {
   OK: 200,
   CREATED: 201,

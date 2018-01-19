@@ -1,4 +1,4 @@
-import { LogoutAction } from './../state-management/app-state/user-actions';
+import { LogoutAction, LookupUserinfoAction } from './../state-management/app-state/user-actions';
 import { Store } from '@ngrx/store';
 import { TOKEN } from './../global-properties/properties';
 import { SideMenu, MainPage, FirstRunPage } from './../pages/pages';
@@ -62,7 +62,7 @@ export class MyApp {
     this.storage.get(TOKEN).then((token) => {
       if (token) {
         this.rootPage = MainPage;
-        //this.store.dispatch(new LookupUserinfoAction());
+        this.store.dispatch(new LookupUserinfoAction());
       }
       else
         this.rootPage = FirstRunPage;

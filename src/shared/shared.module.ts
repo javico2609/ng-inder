@@ -10,6 +10,7 @@ import {
     MatInputModule,
     MatGridListModule
  } from '@angular/material';
+import { SwingModule } from 'angular2-swing';
 
 @NgModule({
     imports: [
@@ -22,7 +23,9 @@ import {
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
-        MatGridListModule
+        MatGridListModule,
+
+        SwingModule
     ],
     exports: [
         FormsModule,
@@ -33,7 +36,9 @@ import {
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
-        MatGridListModule
+        MatGridListModule,
+
+        SwingModule
     ],
     declarations: [],
     providers: [],

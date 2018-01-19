@@ -6,7 +6,7 @@ export const ActionTypes = {
   LOGIN: type('[USER] LoginAction'),
   LOGOUT: type('[USER] LogoutAction'),
   LOOKUP_USERINFO: type('[USER] LookupUserinfoAction'),
-  API_ERROR: type('[APP] ApiErrorAction')
+  API_ERROR: type('[USER] ApiErrorAction')
 };
 
 export class LoginAction implements Action {
